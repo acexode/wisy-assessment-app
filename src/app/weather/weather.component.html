@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="holder">
+    <div class="header">
+      <div class="header-content"><span>7 Days Forecast</span></div>
+    </div>
+    <div class="forecast">
+      <div class="chart-container">
+        <canvas id="chartCanvas"></canvas>
+      </div>
+      <div class="card table-responsive container mt-3">
+        <h4>Forecast Table</h4>
+        <table class="table table-borderless table-striped table-hover">
+          <tbody>
+            @for (data of forecastData; track data.name) {
+            <tr *ngIf="data.isDaytime">
+              <td>{{ data.startTime | date: "EE, MMM d, y" }} </td>
+              <td><img [src]="data.icon" alt="forecast icon" > </td>
+              <td>{{ data.shortForecast }} </td>
+              <td>{{ data.temperature }} <sup>0</sup> {{data.temperatureUnit}} </td>
+  
+  
+            </tr>
+            } @empty {
+            Fetching data ...
+            }
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
